@@ -1,15 +1,3 @@
-        // document.addEventListener('DOMContentLoaded', () => {
-        //   const voiceInput = document.getElementById('voiceInput');
-        //   const voiceButton = document.getElementById('voiceButton');
-
-
-        //   voiceInput.addEventListener('click', () => {
-        //     voiceInput.removeAttribute('readonly');
-        //   });
-        // });
-
-
-
 var ignore_onend;
 var recognizing = false;
 
@@ -141,13 +129,22 @@ function confirmText() {
     // Get the current content of the .confirmedText element
     var currentContent = document.querySelector(".confirmedText").innerHTML;
 
+    var voiceInputText = document.querySelector("#voiceInput").value
+
+    if(voiceInputText==''){
+        console.log("no voice input")
+        return;
+    }
+    document.querySelector("#voiceInput").value=''
+    
+
     // Check if .confirmedText already has content
     if (currentContent.length > 0) {
         // If it does, prepend a line break or new div before the new content
-        document.querySelector(".confirmedText").innerHTML += "<br><div>" + final_transcript + "</div>";
+        document.querySelector(".confirmedText").innerHTML += "<br><div>" + voiceInputText + "</div>";
     } else {
         // If it's empty, just set the new content
-        document.querySelector(".confirmedText").innerHTML = "<div>" + final_transcript + "</div>";
+        document.querySelector(".confirmedText").innerHTML = "<div>" + voiceInputText + "</div>";
     }
 }
 
