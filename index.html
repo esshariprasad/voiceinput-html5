@@ -8,9 +8,11 @@
 </head>
 <body>
   <div class="container">
+    <div class="confirmedText"></div>
     <div class="input-container">
       <input type="text" id="voiceInput" placeholder="Speak into your microphone" >
       <button  id="voiceButton"><img id="start_img" src="mic.gif" alt="Microphone" onclick="startButton()" ></button>
+      <button class="confirm" onclick="confirmText()">done</button>
     </div>
   </div>
 <script src="./script.js">

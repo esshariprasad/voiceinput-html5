@@ -134,6 +134,22 @@ const startButton=()=>{
     
 
 
+function confirmText() {
+    console.log("in confirm text");
+    console.log(final_transcript);
+
+    // Get the current content of the .confirmedText element
+    var currentContent = document.querySelector(".confirmedText").innerHTML;
+
+    // Check if .confirmedText already has content
+    if (currentContent.length > 0) {
+        // If it does, prepend a line break or new div before the new content
+        document.querySelector(".confirmedText").innerHTML += "<br><div>" + final_transcript + "</div>";
+    } else {
+        // If it's empty, just set the new content
+        document.querySelector(".confirmedText").innerHTML = "<div>" + final_transcript + "</div>";
+    }
+}
 
 
 
