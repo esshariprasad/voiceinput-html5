@@ -1,0 +1,38 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  button img {
+    width: 30px; /* Adjust the size of the microphone image as needed */
+    height: auto;
+  }
+  
