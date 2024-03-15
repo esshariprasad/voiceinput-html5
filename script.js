@@ -11,22 +11,46 @@
     var ignore_onend;
     var recognizing = false;
 
+    var final_transcript = '';
+
+
+    var first_char = /\S/;
+function capitalize(s) {
+  return s.replace(first_char, function(m) { return m.toUpperCase(); });
+}
+
+
     const startButton=()=>{
             const recognition = new webkitSpeechRecognition(); // Use the appropriate interface for different browsers
 
-            console.log("inside the browser")
+            // console.log("inside the browser")
             recognition.continuous = true;
             recognition.interimResults = true;
     
             recognition.onresult = (event) => {
-            console.log(event)
-              const spokenText = event.results[0][0].transcript;
-              voiceInput.value = spokenText;
+            // console.log(event)
+            //   const spokenText = event.results[0][0].transcript;
+             
+
+              var interim_transcript = '';
+              for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                  final_transcript += event.results[i][0].transcript;
+                } else {
+                  interim_transcript += event.results[i][0].transcript;
+                }
+              }
+              final_transcript = capitalize(final_transcript);
+              voiceInput.value = final_transcript;
+  
+
+
+
             };
     
             if (recognizing) {
                 recognition.stop();
-                console.log("stoping the recording")
+                // console.log("stoping the recording")
                 start_img.src = 'mic.gif';
                 return;
               }
@@ -52,7 +76,7 @@
                 }
                 if (event.error == 'not-allowed') {
                   if (event.timeStamp - start_timestamp < 100) {
-                    console.log("info blocked")
+                    // console.log("info blocked")
                   } else {
                     
                   }
@@ -61,15 +85,13 @@
               };
 
               recognition.onend = function() {
+                // console.log("in recognition on end")
                 recognizing = false;
                 if (ignore_onend) {
                   return;
                 }
                 start_img.src = 'mic.gif';
-                if (!final_transcript) {
-                  showInfo('info_start');
-                  return;
-                }
+
 
               };
 
@@ -98,17 +120,17 @@
           recognition.onerror = function(event) {
             if (event.error == 'no-speech') {
               start_img.src = 'mic.gif';
-              console.log("error")    
+            //   console.log("error")    
               ignore_onend = true;
             }
             if (event.error == 'audio-capture') {
               start_img.src = 'mic.gif';
-             console.log("audio capture error")
+            //  console.log("audio capture error")
               ignore_onend = true;
             }
             if (event.error == 'not-allowed') {
               if (event.timeStamp - start_timestamp < 100) {
-                console.log("info blocked")
+                // console.log("info blocked")
               } else {
                 
               }
