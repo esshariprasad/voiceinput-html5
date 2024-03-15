@@ -141,10 +141,10 @@ function confirmText() {
     // Check if .confirmedText already has content
     if (currentContent.length > 0) {
         // If it does, prepend a line break or new div before the new content
-        document.querySelector(".confirmedText").innerHTML += "<br><div>" + voiceInputText + "</div>";
+        document.querySelector(".confirmedText").innerHTML += `<div class="TextHistory">  ${voiceInputText} </div>`;
     } else {
         // If it's empty, just set the new content
-        document.querySelector(".confirmedText").innerHTML = "<div>" + voiceInputText + "</div>";
+        document.querySelector(".confirmedText").innerHTML = `<div class="TextHistory">  ${voiceInputText} </div>`;
     }
 }
 

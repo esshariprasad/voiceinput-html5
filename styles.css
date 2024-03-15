@@ -66,3 +66,42 @@ body, html {
     border-radius: 5px;
     color: white;
   }
+
+  .TextHistory {
+    background-color: #f1f0f0; /* Light grey background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the bubble */
+    margin: 5px 0; /* Space between messages */
+    max-width: 80%; /* Maximum bubble width */
+    word-wrap: break-word; /* Ensure long words do not overflow */
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    position: relative; /* For positioning the arrow if needed */
+  }
+  
+  /* For messages from the user, you might want to differentiate them */
+  .UserTextHistory {
+    background-color: #007bff; /* Change the background color for user messages */
+    color: white; /* White text color for contrast */
+    margin-left: auto; /* Align to the right */
+  }
+  
+  /* Optional: Add a small arrow to make it look more like a chat bubble */
+  .TextHistory::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px; /* Adjust based on your layout */
+    width: 0;
+    height: 0;
+    border: 10px solid transparent; /* Adjust size */
+    border-top-color: #f1f0f0; /* Match the bubble's background color */
+    border-bottom: 0;
+    margin-left: -10px;
+    margin-bottom: -10px;
+  }
+  
+  .UserTextHistory::after {
+    border-top-color: #007bff; /* Match the user bubble's background color */
+    left: auto;
+    right: 20px; /* Align the arrow on the right for user messages */
+  }
