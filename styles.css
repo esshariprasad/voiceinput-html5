@@ -78,13 +78,6 @@ body, html {
     position: relative; /* For positioning the arrow if needed */
   }
   
-  /* For messages from the user, you might want to differentiate them */
-  .UserTextHistory {
-    background-color: #007bff; /* Change the background color for user messages */
-    color: white; /* White text color for contrast */
-    margin-left: auto; /* Align to the right */
-  }
-  
   /* Optional: Add a small arrow to make it look more like a chat bubble */
   .TextHistory::after {
     content: "";
@@ -100,8 +93,3 @@ body, html {
     margin-bottom: -10px;
   }
   
-  .UserTextHistory::after {
-    border-top-color: #007bff; /* Match the user bubble's background color */
-    left: auto;
-    right: 20px; /* Align the arrow on the right for user messages */
-  }
